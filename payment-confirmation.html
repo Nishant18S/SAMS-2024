@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <style>
+        /* Define your CSS styles for the payment confirmation page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .confirmation-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff; /* Blue color for title */
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border: 2px solid #ddd; /* Border around the table */
+            border-radius: 8px;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for elevation */
+            background-color: #ffffff; /* White background */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Light gray background for header cells */
+            color: #333; /* Dark gray text color for headers */
+        }
+
+        .user-profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ddd; /* Fallback color while image loads */
+        }
+
+        .user-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff; /* Blue background for button */
+            color: #fff; /* White text color for button */
+            transition: background-color 0.3s ease;
+        }
+
+        .print-button button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .print-button button:active {
+            background-color: #003d7d; /* Even darker blue on click */
+        }
+
+        /* Hover and active states for table rows */
+        table tr:hover {
+            background-color: #f2f2f2; /* Light gray background on hover */
+        }
+
+        table tr:active {
+            background-color: #e0e0e0; /* Lighter gray background on active state */
+        }
+
+        /* Custom style for paid transactions */
+        .paid-transaction {
+            background-color: #d4edda; /* Light green background color */
+            color: #155724; /* Dark green text color */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-container">
+        <div class="confirmation-title">Payment Confirmation</div>
+        <table id="paymentTable">
+            <tr>
+                <th>Field</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>User Name</td>
+                <td id="userName"></td>
+            </tr>
+            <tr>
+                <td>Amount Paid</td>
+                <td id="amount"></td>
+            </tr>
+            <tr>
+                <td>Transaction ID</td>
+                <td id="transactionId"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ishantsankarswain-portfolio-2024-ali.netlify.app//Portfolio.html" alt="QR Code">
+                </td>
+            </tr>
+            
+        </table>
+
+        <div class="print-button">
+            <button onclick="printConfirmation()">Print Payment Confirmation</button>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve payment details from localStorage
+        const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+
+        // Populate payment details on the confirmation page
+        if (paymentDetails) {
+            document.getElementById('userName').textContent = paymentDetails.userName;
+            document.getElementById('amount').textContent = 'Rs ' + paymentDetails.amount; // Prefix with 'Rs'
+            document.getElementById('transactionId').textContent = paymentDetails.transactionId;
+            
+            // Add dynamic CSS class based on payment status (example: paid transaction)
+            if (paymentDetails.status === 'paid') {
+                document.getElementById('paymentTable').classList.add('paid-transaction');
+            }
+        } else {
+            alert('Payment details not found.');
+        }
+
+        // Function to handle printing and alerting
+        function printConfirmation() {
+            window.print();
+            // Alert message after printing can be added here if needed
+        }
+    </script>
+
+</body>
+</html>

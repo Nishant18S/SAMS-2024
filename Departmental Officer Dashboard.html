@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departmental Officer Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+        /* Adjustments for profile photo size */
+        .profile-photo {
+            max-width: 100px;
+            height: auto;
+        }
+
+        /* Styling for approved and rejected text */
+        .approved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .rejected {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Departmental Officer Dashboard</h1>
+
+        <!-- Display Personal Information -->
+        <table id="personalInfoTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile No.</th>
+                    <th>Email ID</th>
+                    <th>Date of Birth</th>
+                    <th>Profile Photo</th>
+                </tr>
+            </thead>
+            <tbody id="personalInfoBody">
+                <!-- Data row will be inserted here dynamically -->
+            </tbody>
+        </table>
+        <br>
+        <!-- Display Selected Colleges -->
+        <div class="selected-colleges">
+            <h2>Selected Colleges</h2>
+            <table id="selectedCollegesTable">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>College Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="selectedCollegesBody">
+                    <!-- Data rows will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        
+    </div>
+
+    <script>
+        // JavaScript code to display submitted data
+        function displaySubmittedData() {
+            // Retrieve form data from localStorage
+            const formDataString = localStorage.getItem('formData');
+    
+            // Check if formDataString exists and parse it
+            if (formDataString) {
+                const formData = JSON.parse(formDataString);
+    
+                // Display personal information
+                const personalInfoBody = document.getElementById('personalInfoBody');
+                personalInfoBody.innerHTML = `
+                    <tr>
+                        <td>${formData.userName}</td>
+                        <td>${formData.userMobile}</td>
+                        <td>${formData.userEmail}</td>
+                        <td>${formData.dob}</td>
+                        <td><img src="${formData.profilePic}" alt="Profile Picture" class="profile-photo"></td>
+                    </tr>
+                `;
+    
+                // Display selected colleges in table format
+                const selectedCollegesBody = document.getElementById('selectedCollegesBody');
+                selectedCollegesBody.innerHTML = '';
+                formData.selectedColleges.forEach((college, index) => {
+                    let statusText = '';
+                    let statusClass = '';
+                    if (college.status === 'approved') {
+                        statusText = 'Approved';
+                        statusClass = 'approved';
+                    } else if (college.status === 'rejected') {
+                        statusText = 'Rejected';
+                        statusClass = 'rejected';
+                    } else {
+                        statusText = 'Pending';
+                    }
+    
+                    let row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${college}</td> <!-- Ensure college.name exists -->
+                             <td>
+                                <button onclick="approveCollege('${college}')">Approve</button>
+                                <button onclick="rejectCollege('${college}')">Reject</button>
+                            </td>
+                            <td class="${statusClass}">${statusText}</td>
+                           
+                        </tr>
+                    `;
+                    selectedCollegesBody.innerHTML += row;
+                });
+    
+                // Display submitted requests (assuming formData includes colleges and their status)
+                const submittedDataBody = document.getElementById('requestTableBody');
+                submittedDataBody.innerHTML = '';
+                formData.colleges.forEach(college => {
+                    // Check if college.name exists before using it
+                    if (college && collegeName) {
+                        let statusText = '';
+                        let statusClass = '';
+                        if (college.status === 'approved') {
+                            statusText = 'Approved';
+                            statusClass = 'approved';
+                        } else if (college.status === 'rejected') {
+                            statusText = 'Rejected';
+                            statusClass = 'rejected';
+                        } else {
+                            statusText = 'Pending';
+                        }
+    
+                        let row = `
+                            <tr>
+                                <td>${formData.userName}</td>
+                                <td>${formData.userMobile}</td>
+                                <td>${formData.userEmail}</td>
+                                <td>${formData.dob}</td>
+                                <td>${college}</td>
+                                <td class="${statusClass}">${statusText}</td>
+                                <td>
+                                    <button onclick="approveRequest('${college}')">Approve</button>
+                                    <button onclick="rejectRequest('${college}')">Reject</button>
+                                </td>
+                            </tr>
+                        `;
+                        submittedDataBody.innerHTML += row;
+                    } else {
+                        console.error('College name not found or undefined.');
+                    }
+                });
+            } else {
+                // Handle case where form data is missing or invalid
+                console.error('Form data not found in local storage.');
+            }
+        }
+        
+        function updateCollegeStatus(collegeName, status) {
+    // Retrieve formData from localStorage
+    const formDataString = localStorage.getItem('formData');
+
+    if (formDataString) {
+        const formData = JSON.parse(formDataString);
+
+        // Find the college in formData and update its status
+        const collegeToUpdate = formData.selectedColleges.find(college => college === collegeName);
+        if (collegeToUpdate) {
+            collegeToUpdate.status = status;
+
+            // Save updated formData back to localStorage
+            localStorage.setItem('formData', JSON.stringify(formData));
+
+            // Update display
+            displaySubmittedData();
+        } else {
+            console.error(`College ${collegeName} not found in formData.`);
+        }
+    } else {
+        console.error('Form data not found in local storage.');
+    }
+}
+
+
+    
+function approveCollege(collegeName) {
+    // Implement functionality to approve the selected college
+    alert(`College ${collegeName} approved!`);
+    // Update status in formData and then update the display
+    updateCollegeStatus(collegeName, 'approved');
+}
+
+function rejectCollege(collegeName) {
+    // Implement functionality to reject the selected college
+    alert(`College ${collegeName} rejected!`);
+    // Update status in formData and then update the display
+    updateCollegeStatus(collegeName, 'rejected');
+}
+
+function approveRequest(collegeName) {
+    // Implement functionality to approve request for the specific college
+    alert(`Request approved for ${collegeName}!`);
+    // Update status in formData and then update the display
+    updateCollegeStatus(collegeName, 'approved');
+}
+
+function rejectRequest(collegeName) {
+    // Implement functionality to reject request for the specific college
+    alert(`Request rejected for ${collegeName}!`);
+    // Update status in formData and then update the display
+    updateCollegeStatus(collegeName, 'rejected');
+}
+
+        // Call the function when the page loads
+        displaySubmittedData();
+    </script>
+    
+</body>
+</html>

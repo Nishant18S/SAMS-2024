@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7oO-fAT8ev2SkFJ8VDohvx-gNmVMpBIGcVEcyb8W71J9rX5HzW0K2yehd3ElIa7D1RJI&usqp=CAU">
+    <title>Student Application Dashboard</title>
+    <style>
+        .im
+        {
+            display: block; /* Removes the default inline-block spacing */
+            margin: 0 auto;
+            height: auto;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Allow horizontal scroll if necessary */
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            background-color: #18c8ae;
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .section-content {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        h2
+        {
+            font-family: "Times New Roman", Times, serif;
+        }
+        
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .profile-pic {
+            max-width: 100px;
+            max-height: 100px;
+            
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+    <div class="container">
+        <marquee style="color:rgb(35, 28, 226)">Welcome to Student Academic Management System (SAMS) Common Application Form 2024-2025</marquee>
+        <h1>Common Application Form</h1>
+        <p>Admission to Higher Secondary School</p>
+        <p>Academic Session (2024-2025)</p>
+        <img class="im" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Seal_of_Odisha.png" height="150" width="180">
+        <p>Department of School & Mass Education, Government Of Odisha</p>
+        <!-- Personal Information Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Personal Information-1</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile No.</th>
+                            <th>Email ID</th>
+                            <th>Date of Birth</th>
+                            <th>Profile Photo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personalInfoBody">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Personal Information Section-2 -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Personal Information-2</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Parent Mobile No.</th>
+                            <th>Blood Group</th>
+                            <th>Religion</th>
+                            <th>Nationality</th>
+                            <th>Mother Tongue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personalInfoBody2">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+         <!-- Personal Information Section-3 -->
+         <div class="section">
+            <div class="section-header">
+                <h2>Address Information-1</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Present Address</th>
+                            <th>Permanent Address</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personalInfoBody3">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Personal Information Section-4 -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Address Information-2</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>District</th>
+                            <th>Block</th>
+                            <th>PIN Code</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personalInfoBody4">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Personal Information Section-5 -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Reservation Information</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>NEET/JEE Details</th>
+                            <th>Orphan</th>
+                            <th>Reservation Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="personalInfoBody5">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Academic Information Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Course Information</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Marks Obtained</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="academicInfoBody">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Additional Information Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Parent Information</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Father's Name</th>
+                            <th>Mother's Name</th>
+                            <th>Gender</th>
+                            <th>Aadhar Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="additionalInfoBody">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Subject-wise Marks Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Subject-Wise (10th  Marks) Information</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Marks</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectMarksBody">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Bank Details Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Bank Information</h2>
+            </div>
+            <div class="section-content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Bank Name</th>
+                            <th>Account No.</th>
+                            <th>IFSC Code</th>
+                            <th>Payments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bankDetailsBody">
+                        <!-- Data rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+         <!-- College Details Section -->
+    <div class="section">
+        <div class="section-header">
+            <h2>Colleges Information</h2>
+        </div>
+        <div class="section-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Selected Colleges</th>
+                    </tr>
+                </thead>
+                <tbody id="selectedColleges">
+                    <!-- Data rows will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve form data from localStorage
+            const formData = JSON.parse(localStorage.getItem('formData'));
+
+            if (formData && Array.isArray(formData.selectedColleges)) {
+                // Display selected colleges
+                const selectedColleges = formData.selectedColleges;
+                const tableBody = document.querySelector('#selectedColleges');
+
+                selectedColleges.forEach((college, index) => {
+                    let newRow = tableBody.insertRow();
+                    let cell1 = newRow.insertCell(0);
+                    let cell2 = newRow.insertCell(1);
+
+                    cell1.textContent = index + 1; // Serial number
+                    cell2.textContent = college; // College name
+                });
+            } else {
+                console.warn('No selected colleges found or data format is incorrect.');
+            }
+        });
+    </script>
+
+        <div class="section">
+            <div class="section-header">
+                <h1>Receipt</h1>
+            </div>
+            <div class="section-content">
+                <p>Issued on: <span id="receiptDate"></span></p>
+            
+            
+            <div class="receipt-details">
+                <p>Name: <span id="userName"></span></p>
+                <p>Email: <span id="userEmail"></span></p>
+                <p>Payment Amount: <span id="paymentAmount"></span></p>
+                <p id="transactionId"></p> <!-- Element to display transaction ID -->
+            </div>
+        
+            <div class="receipt-items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamically generated rows for purchased items or details -->
+                        <tr>
+                            <td>Course Fee</td>
+                            <td>$500.00</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="receipt-total">
+                <p>Total Amount: $500.00</p>
+            </div>
+        
+            <div class="receipt-footer">
+                <p>Thank you for your payment!</p>
+                <img class="im" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOcBSmXl8dUoRha6Mz0rlZp91esWHtTSa5g&s">
+            </div>
+        </div>
+    </div>
+    <p class="b">&copy; Student Academic Management System (SAMS)-2024. All Rights Reserved<br>
+        Designed and Developed by Nishant Sankar Swain(2241019607)</p>
+        <button class="print-button" onclick="printData()" style="margin: 20px auto; display: block;">Print Data</button>
+    </div>
+
+
+    <script>
+         // Function to trigger printing
+         function printData() {
+            alert("Printing Page Sucessfully!!!!!");
+            window.print();
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve form data from localStorage
+            const formData = JSON.parse(localStorage.getItem('formData'));
+
+            if (formData) {
+                // Display personal information
+                document.getElementById('personalInfoBody').innerHTML = `
+                    <tr>
+                        <td>${formData.userName}</td>
+                        <td>${formData.userMobile}</td>
+                        <td>${formData.userEmail}</td>
+                        <td>${formData.dob}</td>
+                        <td><img src="${formData.profilePic}" alt="Profile Picture" class="profile-pic"></td>
+                    </tr>
+                `;
+
+                // Display academic information
+                document.getElementById('academicInfoBody').innerHTML = `
+                    <tr>
+                        <td>${formData.course}</td>
+                        <td>${formData.marks}</td>
+                        <td>${formData.percentage}</td>
+                    </tr>
+                `;
+
+                // Display additional information
+                document.getElementById('additionalInfoBody').innerHTML = `
+                    <tr>
+                        <td>${formData.father}</td>
+                        <td>${formData.mother}</td>
+                        <td>${formData.gender}</td>
+                        <td>${formData.aadhar}</td>
+                    </tr>
+                `;
+                // Display additional information
+                document.getElementById('personalInfoBody2').innerHTML = `
+                    <tr>
+                       <td>${formData.parent_mobile}</td>
+                        <td>${formData.blood_group}</td>
+                        <td>${formData.religion}</td>
+                        <td>${formData.nationality}</td>
+                        <td>${formData.mother_tongue}</td>
+                    </tr>
+                `;
+                // Display additional information
+                document.getElementById('personalInfoBody3').innerHTML = `
+                    <tr>
+                        <td>${formData.present_address}</td>
+                        <td>${formData.permanent_address}</td>
+                        <td>${formData.country}</td>
+                    </tr>
+                `;
+                // Display additional information
+                document.getElementById('personalInfoBody4').innerHTML = `
+                    <tr>
+                        <td>${formData.state}</td>
+                        <td>${formData.district}</td>
+                        <td>${formData.block}</td>
+                        <td>${formData.pin}</td>
+                    </tr>
+                `;
+                // Display additional information
+                document.getElementById('personalInfoBody5').innerHTML = `
+                    <tr>
+                        <td>${formData.neet_jee_details}</td>
+                        <td>${formData.orphan}</td>
+                        <td>${formData.reservation_details}</td>
+                    </tr>
+                `;
+
+                // Display subject-wise marks
+                const subjectMarks = formData.subjects;
+                const subjectMarksBody = document.getElementById('subjectMarksBody');
+
+                for (let subject in subjectMarks) {
+                    const marks = subjectMarks[subject];
+                    let grade = '';
+                    let status = 'Pass';
+
+                    if (marks >= 90) {
+                        grade = 'A+';
+                    } else if (marks >= 80) {
+                        grade = 'A';
+                    } else if (marks >= 70) {
+                        grade = 'B';
+                    } else if (marks >= 60) {
+                        grade = 'C';
+                    } else if (marks >= 50) {
+                        grade = 'D';
+                    } else {
+                        grade = 'F';
+                        status = 'Fail';
+                    }
+
+                    subjectMarksBody.innerHTML += `
+                        <tr>
+                            <td>${subject}</td>
+                            <td>${marks}</td>
+                            <td>${grade}</td>
+                            <td>${status}</td>
+                        </tr>
+                    `;
+                }
+
+                // Display bank details
+                document.getElementById('bankDetailsBody').innerHTML = `
+                    <tr>
+                        <td>${formData.bank_name_label}</td>
+                        <td>${formData.account_no}</td>
+                        <td>${formData.ifsc}</td>
+                        <td>${formData.amount}</td>
+                    </tr>
+                `;
+
+            }
+        });
+    </script>
+    
+    <script>
+        // Get encoded data from URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const encodedData = urlParams.get('data');
+        
+        if (encodedData) {
+            // Decode and parse payment data
+            const decodedData = atob(encodedData);
+            const paymentData = JSON.parse(decodedData);
+    
+            // Update payment details on the receipt page
+            document.getElementById('paymentAmount').textContent = `Amount: ${paymentData.amount}`;
+            document.getElementById('paymentMethod').textContent = `Payment Method: ${paymentData.method}`;
+            document.getElementById('paymentTimestamp').textContent = `Timestamp: ${paymentData.timestamp}`;
+        } else {
+            // Handle missing or invalid data
+            //document.querySelector('.receipt-container').innerHTML = '<h1>Error: Invalid Payment Data</h1>';
+        }
+    </script>
+    <script>
+        function generateTransactionId() {
+    const timestamp = Date.now().toString(36); // Convert current timestamp to base36 string
+    const randomNumber = Math.random().toString(36).substr(2, 5); // Generate random number and take substring
+    return timestamp + randomNumber; // Concatenate timestamp and random number
+}
+
+    </script>
+    <script>
+   // Function to populate receipt fields with fetched user data
+   function populateReceiptFields() {
+    // Retrieve form data from localStorage
+    const formData = JSON.parse(localStorage.getItem('formData'));
+
+    // Populate receipt fields if form data is available
+    if (formData) {
+        document.getElementById('userName').textContent = formData.userName;
+        document.getElementById('userEmail').textContent = formData.userEmail;
+        document.getElementById('paymentAmount').textContent = '$500.00'; // Replace with actual payment amount
+
+        // Generate and display transaction ID
+        const transactionId = generateTransactionId();
+        document.getElementById('transactionId').textContent = `Transaction ID: ${transactionId}`;
+
+        // Set the receipt date dynamically
+        const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true // This ensures the use of AM/PM notation
+};
+document.getElementById('receiptDate').textContent = new Date().toLocaleString(undefined, options);
+
+    } else {
+        // Handle case where form data is not available
+        console.error('Form data not found.');
+    }
+}
+
+   
+   // Call populateReceiptFields when the page loads
+   window.onload = function() {
+       populateReceiptFields();
+   };
+   
+</script>
+
+</body>
+</html>

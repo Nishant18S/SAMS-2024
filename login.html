@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjSoKn8IQb33N82TB_LkwVNhgHmlqTuZTcWA&s">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Disable right-click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    
+    function ctrlShiftKey(e, keyCode) {
+    return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    }
+    
+    document.onkeydown = (e) => {
+    // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+    if (
+      event.keyCode === 123 ||
+      ctrlShiftKey(e, 'I') ||
+      ctrlShiftKey(e, 'J') ||
+      ctrlShiftKey(e, 'C') ||
+      (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+    )
+      return false;
+    };
+    </script>
+    
+    <title>SAMS Login</title>
+    <style>
+        i
+        {
+            color: deeppink;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://www.ituonline.com/wp-content/uploads/2023/10/What-Does-It-Mean-for-Computers.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            height: auto;
+            background-color: #d2c918;
+            margin-top: 0px;
+            margin-left: 20px;
+            padding: 20px;
+            border-radius: 0x;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative; /* Ensure relative positioning for the toggle */
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group .password-toggle {
+            position: absolute;
+            top: 70%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            background-color: green;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: cyan;
+        }
+
+        .form-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-links a {
+            color: blue;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .form-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="https://videos.pexels.com/video-files/3129957/3129957-sd_640_360_25fps.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <marquee style="color:red">Welcome to Student Academic Management System (SAMS) for Login Page.</marquee>
+        <h1>Login</h1>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="login_email"><i class="fa fa-envelope"></i> Enter your E-Mail ID.:</label>
+                <input type="email" id="login_email" name="login_email" placeholder="Enter your E-Mail ID." required>
+            </div>
+            <div class="form-group">
+                <label for="login_password"><i class="fa fa-lock"></i> Enter your Password:</label>
+                <input type="password" id="login_password" name="login_password" placeholder="Enter your Password" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility('login_password')">
+                    <i class="fa fa-eye" id="password-toggle-icon"></i>
+                </span>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="loginUser()"><i class="fa fa-sign-in-alt"></i> Login</button>
+            </div>
+            <div class="form-group">
+                <button type="reset"><i class="fa fa-sync-alt"></i> Reset</button>
+            </div>
+            <div class="form-links">
+                <a href="input.html"><i class="fa fa-user-plus"></i> Register</a>
+                <a href="forgot_password.html"><i class="fa fa-question-circle"></i> Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById('password-toggle-icon');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function loginUser() {
+            const storedEmail = localStorage.getItem("userEmail");
+            const storedPassword = localStorage.getItem("userPassword");
+
+            const userEmail = document.getElementById("login_email").value;
+            const userPassword = document.getElementById("login_password").value;
+
+            if (userEmail === storedEmail && userPassword === storedPassword) {
+                alert("✅ Login successful!");
+                window.location.href = "student_info.html";
+            } else {
+                alert("❌ Invalid email or password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

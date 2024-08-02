@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #profilePic {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #dataTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #dataTable th, #dataTable td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        #dataTable th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Submitted Data</h1>
+
+    <div id="submittedContent">
+        <!-- Content will be dynamically inserted here -->
+    </div>
+</div>
+
+<script>
+    // Retrieve form data from localStorage
+    const formData = JSON.parse(localStorage.getItem("formData"));
+
+    // Display submitted data and profile photo
+    if (formData) {
+        let content = `
+            <img id="profilePic" src="data:image/jpeg;base64,${localStorage.getItem('profilePicBase64')}" alt="Profile Picture">
+            <table id="dataTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile No.</th>
+                        <th>Email ID</th>
+                        <th>Date of Birth</th>
+                        <th>Course</th>
+                        <th>Marks Obtained</th>
+                        <th>Interests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${formData.userName}</td>
+                        <td>${formData.userMobile}</td>
+                        <td>${formData.userEmail}</td>
+                        <td>${formData.dob}</td>
+                        <td>${formData.course}</td>
+                        <td>${formData.marks}</td>
+                        <td>${formData.interests}</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+        document.getElementById("submittedContent").innerHTML = content;
+    } else {
+        alert("No form data found.");
+        window.location.href = "index.html"; // Redirect to main page if no form data found
+    }
+
+    // Clear localStorage after displaying data (optional)
+    localStorage.removeItem("formData");
+    localStorage.removeItem("profilePicBase64");
+</script>
+
+</body>
+</html>

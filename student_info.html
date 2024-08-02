@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://icon2.cleanpng.com/20180713/haf/kisspng-learning-management-system-educational-technology-cliente-dibujo-5b489e685fc5e6.8515324715314858003923.jpg">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+    
+        function ctrlShiftKey(e, keyCode) {
+          return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+    
+        document.onkeydown = (e) => {
+          // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+          if (
+            e.keyCode === 123 ||
+            ctrlShiftKey(e, 'I') ||
+            ctrlShiftKey(e, 'J') ||
+            ctrlShiftKey(e, 'C') ||
+            (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+          )
+            return false;
+        };
+        </script>
+    
+    <style>
+        i
+        {
+            color: rgb(10, 28, 227);
+        }
+        label
+        {
+            color: #00ced1;
+        }
+        input[type=text],input[type=number],input[type=email],input[type=tel],input[type=date]
+        {
+          color: #7cfc00;
+          background-color:grey;
+        }
+    select
+    {
+        background-color: grey;
+        color: gold;
+        width: 100%;
+    }
+        input::placeholder {
+    color: blue; /* Green color */
+}
+
+/* Change placeholder color specifically for type="text" */
+input[type=text]::placeholder {
+    color:blue; /* Green color */
+}
+
+/* Change placeholder color specifically for type="number" */
+input[type=number]::placeholder {
+    color: rgb(188, 27, 220); /* Green color */
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+.container-cn
+{
+    display: flex;
+    max-width: auto;
+    max-height: auto;
+    margin: 20px auto;
+    background-color: grey;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    max-width: 1400px;
+    max-height: auto;
+    margin: 20px auto;
+    margin-right: 50px;
+    overflow: hidden;
+    transition: margin-left 0.3s ease;
+}
+
+
+.menu-container {
+    flex: 0 0 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
+.content-container {
+    flex: 1;
+    padding: 10px;
+    background-color: #00ced1;
+    
+}
+
+
+
+.section.active {
+    display: block;
+    
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-group {
+            background-color: gold; /* Light blue background color */
+            padding: 10px; /* Add some padding if needed */
+            border-radius: 5px; /* Optional: add rounded corners */
+            margin-bottom: 10px; /* Optional: space between form groups */
+        }
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background-color: green;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: rgb(230, 50, 56);
+}
+
+/* Style for submitted data table */
+#submittedData {
+    display: none;
+    margin-top: 30px;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+#dataTable th {
+    background-color: #f0f0f0;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.image-preview {
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-group label::after {
+    content: "*";
+    color: red;
+    margin-left: 5px;
+}
+.menu-container {
+    flex: 0 0 250px; /* Fixed width for menu */
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.section-menu {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    gap: 50px; /* Add spacing between menu items */
+    padding: 20px;
+}
+
+
+
+
+.section {
+    display: none; /* Initially hide all sections */
+    padding: 20px;
+}
+
+.section.active {
+    display: block; /* Show only active section */
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color:red;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 600px) {
+    .section-menu {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        overflow-x: auto;
+        position: sticky;
+    }
+
+    .menu-item {
+        margin: 0 8px;
+        white-space: nowrap; /* Prevent wrapping */
+    }
+}
+
+
+.logout-btn button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background-color: red; /* Choose a suitable color */
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn button:hover {
+    background-color: darkred; /* Darken the color on hover */
+}
+td
+{
+    text-align: center;
+}
+.radio-buttons {
+    white-space: nowrap; /* Prevents wrapping onto a new line */
+}
+
+.radio-buttons label {
+    display: inline-block; /* Ensures labels are on the same line */
+    margin-right: 10px; /* Adjust spacing between labels if needed */
+}
+th
+{
+    text-align: left;
+}
+td,.t
+{
+    text-align: center;
+}
+.image-preview {
+        text-align: center; /* Center contents horizontally */
+        margin-left: 190px;
+        margin-top: 10px;
+    }
+
+    .image-preview img {
+        max-width: 100%; /* Ensure image fits within container */
+        max-height: 150px; /* Adjust maximum height as needed */
+        display: block; /* Remove any inline spacing issues */
+        margin: 0 auto; /* Center image within container */
+        margin-left: 2px;
+    }
+    a
+    {
+        text-decoration:none;
+        color: black;
+    }
+    
+
+.menu-item:nth-child(1) {
+    background-color: #ff6347; /* Coral */
+}
+
+.menu-item:nth-child(2) {
+    background-color: #6a5acd; /* Slate Blue */
+}
+
+.menu-item:nth-child(3) {
+    background-color: #20b2aa; /* Light Sea Green */
+}
+
+.menu-item:nth-child(4) {
+    background-color: #ffd700; /* Gold */
+}
+
+.menu-item:nth-child(5) {
+    background-color: #ff69b4; /* Hot Pink */
+}
+
+.menu-item:nth-child(6) {
+    background-color: #00ced1; /* Dark Turquoise */
+}
+
+.menu-item:nth-child(7) {
+    background-color: #7cfc00; /* Lawn Green */
+}
+
+/* Hover effect */
+.menu-item:hover {
+    background-color: gray; /* Darker background color on hover */
+}
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 150%;
+  z-index:-100;
+}
+    #verifyBtn[disabled] {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    #selectedColleges {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    #selectedColleges th, #selectedColleges td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+
+
+    
+
+        .left {
+            width: 25%;
+            font-weight: bold;
+        }
+
+        .left p {
+            padding: 30px 20px;
+        }
+
+        .methods {
+            padding: 10px 0;
+        }
+
+        .methods div {
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .methods div:hover {
+            box-shadow: 0 0 10px rgba(172, 255, 47, 0.196);
+        }
+
+        .methods div::after {
+            content: '';
+            display: inline-block;
+            color: greenyellow;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 4px 0 4px 4px;
+            border-left-color: var(--fondy-success);
+            margin-left: 10px;
+        }
+
+        .fa-solid {
+            margin-right: 10px;
+            font-size: 22px;
+            color: #aaa;
+        }
+
+        .center {
+            width: 50%;
+            border-left: 1px solid #ccc;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #892727;
+        }
+
+        .qr-code-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qrCodeImage {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card-images {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .card-images img {
+            width: 50px;
+            height: auto;
+            margin: 0 5px;
+        }
+       
+
+        .section-menu {
+            display: flex;
+            align-items: center;
+           
+            padding: 10px;
+            color: #fff;
+            position: relative;
+        }
+
+        .menu-item {
+    
+    margin: 17px 8px; /* 10px vertical margin, 20px horizontal margin */
+    cursor: pointer;
+}
+
+        .menu-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .menu-item i {
+            font-size: 20px;
+        }
+
+        .hamburger-menu {
+            display: inline-block;
+            flex-direction: column;
+            cursor: pointer;
+            color: #ccc;
+            margin-left: 50px;
+        }
+
+        .hamburger-menu div {
+            
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 4px 0;
+        }
+
+        .menu-items {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            position: absolute;
+            background-color: #333;
+            padding: 10px;
+            top: 50px;
+            right: 10px;
+            border-radius: 4px;
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .menu-items.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+        }
+        .menu-items {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Start off-screen */
+    width: 100px;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.menu-items.show {
+    left: 0; /* Slide in */
+}
+
+.hamburger-menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1100; /* Ensure it's above the menu */
+}
+
+.hamburger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: #099ee9;
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu.open div:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open div:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+.scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            position: relative;
+        }
+
+        .scrolling-text span {
+            display: inline-block;
+            padding-left: 100%; /* Start off the screen */
+            animation: scroll 30s linear infinite;
+            color: rgb(207, 49, 49);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        #cardDetails
+        {
+            border: 2px solid gold;
+            padding: 20px;
+        }
+
+        /* General Styles for Payment Section */
+#section6 {
+    font-family: Arial, sans-serif;
+    color: #ec1c1c;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.scrolling-text {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #13b9e2;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.container-cn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    width: 45%;
+}
+
+.right {
+    width: 45%;
+}
+
+hr {
+    border: 1px solid #ecf0f1;
+}
+
+.card-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card-images .card-image {
+    max-width: 100px;
+    height: auto;
+}
+
+.success-message {
+    display: none;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.success-message i {
+    margin-right: 10px;
+}
+
+.qr-code-container {
+    margin-top: 20px;
+}
+
+.qr-code-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .container-cn {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .card-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-images .card-image {
+        margin-bottom: 10px;
+    }
+}
+/* Styling for Video with ID 'vid' */
+
+/* Container Styling */
+.container-cn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start of the container */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    padding: 20px;
+}
+
+/* Left Column Styling */
+.left {
+    width: 45%;
+}
+
+/* Methods Section */
+.methods {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 15px; /* Space between items */
+}
+
+.methods div {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    transition: background-color 0.3s ease;
+}
+
+.methods div:hover {
+    background-color: #2980b9; /* Change background on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-cn {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .methods {
+        width: 100%;
+        text-align: center; /* Center text for smaller screens */
+    }
+    </style>
+</head>
+<body>
+    <marquee style="color:rgb(220, 210, 17)">Welcome to Student Academic Management System (SAMS) Application.</marquee>
+    <video autoplay muted loop>
+        <source src="https://cdn.pixabay.com/video/2023/03/09/153957-806571952_tiny.mp4" type="video/mp4">
+      </video>
+    <div class="container">
+        
+        <nav class="section-menu">
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu-items" id="menuItems">
+                <button class="menu-item" onclick="toggleSection('section1')"><i class="fas fa-user"></i></button>
+                <button class="menu-item" onclick="toggleSection('section2')"><i class="fas fa-map-marker-alt"></i></button>
+                <button class="menu-item" onclick="toggleSection('section3')"><i class="fas fa-graduation-cap"></i></button>
+                <button class="menu-item" onclick="toggleSection('section4')"><i class="fas fa-university"></i></button>
+                <button class="menu-item" onclick="toggleSection('section5')"><i class="fas fa-lock"></i></i></button>
+                <button class="menu-item" onclick="toggleSection('section6')"><i class="fas fa-money-check"></i></button>
+                <button class="menu-item"><a href="edit-profile.html" target="_blank"><i class="fas fa-user-edit"></i></a></button>
+                <button class="menu-item" onclick="logout()"><i class="fas fa-sign-out-alt"></i></button>
+                <button class="menu-item"><a href="Private_Website.html" target="_blank"><i class="fas fa-lock"></i></a></button>
+            </div>
+        </nav>
+        <script>
+            function toggleMenu() {
+    const menuItems = document.getElementById('menuItems');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    
+    menuItems.classList.toggle('show');
+    setTimeout(() => menuItems.style.display = 'block', 1000); 
+    hamburgerMenu.classList.toggle('open');
+}
+
+function toggleSection(sectionId) {
+    alert('Toggling section: ' + sectionId);
+    // Implement logic to show/hide sections as needed
+}
+
+function logout() {
+    alert('Logging out');
+}
+
+
+        </script>
+        <main class="content-container">
+            <!-- Section 1: Personal Information -->
+             
+            <div id="section1" class="section active" style="background-color: #ff69b4;">
+                
+                <div class="section-title"> <i class="fas fa-user"></i> Personal Information</div>
+                <div class="scrolling-text">
+                    <span>Welcome to Personal Information Section.</span>
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="userName"><i class="fa fa-user"></i> Name: </label>
+                    <input type="text" id="userName" name="userName" readonly required>
+                </div>
+                <div class="form-group">
+                    <label for="userMobile"><i class="fa fa-mobile-alt"></i> Mobile No.: </label>
+                    <input type="tel" id="userMobile" name="userMobile" readonly required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail"><i class="fa fa-envelope"></i> Email ID: </label>
+                    <input type="email" id="userEmail" name="userEmail" readonly required>
+                </div>
+                <div class="form-group">
+                    <label for="userdob"><i class="fa fa-calendar-alt"></i> Date Of Birth:</label>
+                    <input type="date" id="userdob" name="userdob" required>
+                </div>
+                <div class="form-group">
+                    <table border="1" width="100%">
+                        <tr>
+                            <th><label for="father"><i class="fa fa-user-tie"></i> Father's Name: </label></th>
+                            <td><input type="text" id="father" name="father" placeholder="Enter Your Father's Name: " required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="mother"><i class="fa fa-user"></i> Mother's Name: </label></th>
+                            <td><input type="text" id="mother" name="mother" placeholder="Enter Your Mother's Name: " required></td>
+                        </tr>
+                        
+                        <tr>
+                            <th><label for="aadhar"><i class="fas fa-id-card"></i> Aadhar Number: </label></th>
+                            <td><input type="text" id="aadhar" name="aadhar" placeholder="Enter Your Aadhar No.: " required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="parent_mobile"><i class="fa fa-mobile-alt"> </i> Parent's Mobile Number: </label></th>
+                            <td><input type="number" id="parent_mobile" name="parent_mobile" placeholder="Enter Your Parent Mobile No.: " required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="gender"><i class="fa fa-venus-mars"></i> Gender: </label></th>
+                            <td>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="blood_group"><i class="fas fa-tint"></i> Blood Group: </label></th>
+                            <td>
+                                <select id="blood_group" name="blood_group" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A">A</option>
+                                <option value="A+">A+</option>
+                                <option value="B">B</option>
+                                <option value="B+">B+</option>
+                                <option value="O">O</option>
+                                <option value="O+">O+</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th><label for="religion"><i class="fas fa-praying-hands"></i> Religion: </label></th>
+                            <td>
+                                <select id="religion" name="religion" required>
+                                <option value="">Select Religion</option>
+                                <option value="Hinduism">Hinduism</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Christianity">Christianity</option>
+                                <option value="Judaism">Judaism</option>
+                                <option value="Buddhism">Buddhism</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th><label for="nationality"><i class="fas fa-flag"></i> Nationality: </label></th>
+                            <td>
+                                <select id="nationality" name="nationality" required>
+                                <option value="">Select Nationality</option>
+                                <option value="Afghan">Afghan</option>
+                                <option value="American">American</option>
+                                <option value="Indian">Indian</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Hong Konger">Hong Konger</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th><label for="mother_tongue"><i class="fas fa-language"></i> Mother Tongue: </label></th>
+                            <td>
+                                <select id="mother_tongue" name="mother_tongue" required>
+                                <option value="">Select Mother Tongue</option>
+                                <option value="Bengali">Bengali</option>
+                                <option value="Gujarati">Gujarati</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Oriya">Oriya</option>
+                                <option value="Punjabi">Punjabi</option>
+                                <option value="Tamil">Tamil</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th><label for="orphan"><i class="fas fa-child"></i> Orphan: </label></th>
+                            <td class="radio-buttons">
+                                <label><input type="radio" id="orphan_yes" name="orphan" value="Yes"> Yes</label>
+                                <label><input type="radio" id="orphan_no" name="orphan" value="No"> No</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                 <!-- Add the GIF here -->
+        <div ><img class="load" src="https://cdn.dribbble.com/users/1138853/screenshots/4846677/oaic2_2_gif.gif" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+        <div class="form-group">
+    <button id="nextSection1" onclick="playAudioAndNextSection('section2')">
+        <i class="fas fa-arrow-right"></i> Next Section
+    </button>
+</div>
+
+<!-- Audio elements -->
+<audio id="buttonSoundNext" src="1.wav"></audio>
+<audio id="buttonSoundPrev" src="2.wav"></audio>
+<audio id="notificationSound" src="3.mp3"></audio>
+
+
+            </div>
+            
+            
+            
+        
+            <!-- Section 2: Address Information -->
+            <div id="section2" class="section" style="background-color: #20b2aa;padding: 30px;border-radius: 8px;margin-bottom: 20px;border: 1px solid rgb(204, 204, 204);">
+                
+                <div class="section-title"><i class="fas fa-map-marker-alt"></i> Address Information</div>
+                <div class="scrolling-text">
+                    <span>Welcome to Address Information Section.</span>
+                </div>
+                <br><br>
+                
+                <div class="form-group">
+                    <table border="1" width="100%">
+                        
+                        
+                        <tr>
+                            <th><label for="present_address"><i class="fas fa-map-marker-alt"></i> Present Address: </label></th>
+                            <td><input type="text" id="present_address" name="present_address" placeholder="Enter the Present Address:" required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="permanent_address"><i class="fas fa-home"></i> Permanent Address: </label></th>
+                            <td><input type="text" id="permanent_address" name="permanent_address" placeholder="Enter the Permanent Address:" required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="country"><i class="fas fa-globe"></i> Country: </label></th>
+                            <td>
+                                <select id="country" name="country">
+                                    <option value="">Select Country:</option>
+                                    <option value="U.S.A">U.S.A</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="India">India</option>
+                                    <option value="China">China</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="state"><i class="fa fa-map-marker-alt"></i> State: </label></th>
+                            <td>
+                                <select id="state" name="state">
+                                    <option value="">Select State:</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="district"><i class="fa fa-map-marker-alt"></i> District: </label></th>
+                            <td>
+                                <select id="district" name="district">
+                                    <option value="">Select District:</option>
+                                    <option value="Cuttack">Cuttack</option>
+                                    <option value="Khordha">Khordha</option>
+                                    <option value="Baleswar">Baleswar</option>
+                                    <option value="Koraput">Koraput</option>
+                                    <option value="Ganjam">Ganjam</option>
+                                    <option value="Puri">Puri</option>
+                                    <option value="Sambalpur">Sambalpur</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="block"><i class="fas fa-cube"></i> Block: </label></th>
+                            <td>
+                                <select id="block" name="block">
+                                    <option value="">Select Block: </option>
+                                    <option value="Begunia">Begunia</option>
+                                    <option value="Khorda sadara">Khorda Sadara</option>
+                                    <option value="Banapur">Banapur</option>
+                                    <option value="Bolgarh">Bolgarh</option>
+                                    <option value="Bhubaneswar">Bhubaneswar</option>
+                                    <option value="Bhubaneswar (Muncipal.Corp)">Bhubaneswar (Muncipal.Corp)</option>
+                                    <option value="Chilika">Chilika</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="neet_jee_details"><i class="fas fa-user-graduate"></i> NEET/JEE Details: </label></th>
+                            <td>
+                                <select id="neet_jee_details" name="neet_jee_details">
+                                    <option value="">Select NEET/JEE</option>
+                                    <option value="NEET">NEET</option>
+                                    <option value="JEE">JEE</option>
+                                    <option value="None of These">None of These</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="reservation_details"><i class="fas fa-user-lock"></i> Reservation Details: </label></th>
+                            <td>
+                                <select id="reservation_details" name="reservation_details">
+                                    <option value="">Select Reservation</option>
+                                    <option value="SC">SC</option>
+                                    <option value="ST">ST</option>
+                                    <option value="OBC">OBC</option>
+                                    <option value="SEBC">SEBC</option>
+                                    <option value="General">General</option>
+                                    <option value="PWD">PWD</option>
+                                    <option value="Ex_Serviceman">Ex-Serviceman</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="pin"><i class="fas fa-map-pin"></i> PIN Code: </label></th>
+                            <td>
+                                <input type="number" id="pin" name="pin" placeholder="Enter the PIN Code:" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="profile-pic"><i class="fas fa-portrait"></i> Profile Picture: </label></th>
+                            <td>
+                                <div class="form-group file-upload">
+                                    <!--<label for="profile-pic" class="file-upload-label"></label>-->
+                                    <input type="file" id="profile-pic" name="profile-pic" accept="image/*" onchange="previewImage(event)">
+                                    <div class="image-preview" id="image-preview" onclick="triggerFileInput()">
+                                        <!-- Added onclick event to trigger file input -->
+                                        <img id="preview-image" src="https://t4.ftcdn.net/jpg/05/65/22/41/360_F_565224180_QNRiRQkf9Fw0dKRoZGwUknmmfk51SuSS.jpg" alt="Preview">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <script>
+                            function previewImage(event) {
+                                var reader = new FileReader();
+                                reader.onload = function() {
+                                    var output = document.getElementById('preview-image');
+                                    output.src = reader.result;
+                                    // Additional styling or adjustments can be added here if needed
+                                }
+                                reader.readAsDataURL(event.target.files[0]);
+                            }
+                        
+                            function triggerFileInput() {
+                                var fileInput = document.getElementById('profile-pic');
+                                fileInput.click(); // Simulate a click on the file input element
+                            }
+                        </script>
+                    </table>
+                </div>
+                <div class="load"><img src="https://i.pinimg.com/originals/a1/ba/2c/a1ba2c150d44d387f565a87c54351bf8.gif" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+                <div class="form-group">
+                    <button id="prevSection2" onclick="playAudioAndPrevSection('section1')"><i class="fas fa-arrow-left"></i> Previous Section</button><br><br><br>
+                    <button id="nextSection2" onclick="playAudioAndNextSection('section3')"><i class="fas fa-arrow-right"></i> Next Section</button>
+                </div>
+            </div>
+        
+            <!-- Section 3: Academic Information -->
+            <div id="section3" class="section" style="background-color: #2980b9;padding: 30px;border-radius: 8px;margin-bottom: 20px;border: 1px solid rgb(204, 204, 204);">
+                <div class="section-title"><i class="fas fa-graduation-cap"></i> Academic Information</div>
+                <div class="scrolling-text">
+                    <span>Welcome to Academic Information Section.</span>
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="course"><i class="fas fa-book"></i> Course: </label>
+                    <select id="course" name="course" required>
+                        <option value="">Select Course</option>
+                        <option value="Science">Science</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+                <table id="marksTable" border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="t">Subject</th>
+                            <th class="t">Obtained Marks</th>
+                            <th class="t">Total Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mathematics</td>
+                            <td><input type="number" id="maths" name="maths" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>English</td>
+                            <td><input type="number" id="english" name="english" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Odia</td>
+                            <td><input type="number" id="odia" name="odia" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Social Science</td>
+                            <td><input type="number" id="socialScience" name="socialScience" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>General Science</td>
+                            <td><input type="number" id="generalScience" name="generalScience" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Hindi/Sanskrit</td>
+                            <td><input type="number" id="hindiSanskrit" name="hindiSanskrit" min="0" max="100" required oninput="calculateTotalMarks()"></td>
+                            <td>100</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="form-group">
+                    <label for="marks"><i class="fas fa-award"></i> Total Marks Obtained: </label>
+                    <input type="number" id="marks" name="marks" readonly >
+                </div>
+                <div class="form-group">
+                    <label for="percentage"><i class="fas fa-percent"></i> Percentage: </label>
+                    <input type="number"  id="percentage" name="percentage"  readonly>
+                </div>
+                <div class="load"><img src="https://jit.ac.in/assets/uploads/2022/05/ims-image-10.gif" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+                
+                <div class="form-group">
+                    <button id="prevSection3" onclick="playAudioAndPrevSection('section2')"><i class="fas fa-arrow-left"></i>Previous Section</button><br><br><br>
+                    <button id="nextSection3" onclick="playAudioAndNextSection('section4')"><i class="fas fa-arrow-right"></i>Next Section</button>
+                </div>
+            </div>
+            <!--BANK ACCOUNT INFORMATION-->
+            <div id="section4" class="section" style="background-color: #00d164;padding: 30px;border-radius: 8px;margin-bottom: 20px;border: 1px solid rgb(204, 204, 204);">
+        
+                <div class="section-title"><i class="fas fa-university"></i> Bank Account Information</div>
+                <div class="scrolling-text">
+                    <span>Welcome to Bank Account Information Section.</span>
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="account_no"><i class="fas fa-credit-card"></i> Account No.: </label>
+                    <input type="number" id="account_no" name="account_no" required>
+                </div>
+                <div class="form-group">
+                    <label for="ifsc"><i class="fas fa-code"></i> IFSC Code: </label>
+                    <select id="ifsc" required>
+                        <option value="">Select Your IFSC: </option>
+                        <option value="ABC123">ABC123</option>
+                        <option value="XYZ456">XYZ456</option>
+                    </select>
+                    
+                    <button type="button" id="verifyBtn" onclick="verifyIFSC()"><i class="fas fa-check-circle" style="color: gold;"></i>
+                         Verify</button>
+                </div>
+                <div class="form-group">
+                    <label for="account_holder_label"><i class="fas fa-user"></i> Account Holder Name: </label>
+                    <input type="text" id="account_holder_label" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="bank_name_label"><i class="fas fa-building"></i> Bank Name: </label>
+                    <input type="text" id="bank_name_label" readonly>
+                </div>
+                
+
+
+                
+
+                <script>
+                    // Simulated function to fetch account holder's name and bank name based on IFSC code and username
+                    function fetchAccountDetails(ifscCode, username) {
+                        // Simulated data mapping for IFSC codes to account details (replace with your actual data source or logic)
+                        const accountData = {
+                            "ABC123": {
+                                userName: username,
+                                bankName: "State Bank Of India"
+                            },
+                            "XYZ456": {
+                                userName: username,
+                                bankName: "Central Bank Of India"
+                            },
+                            // Add more IFSC codes and corresponding account details as needed
+                        };
+                
+                        // Simulate delay for demonstration (remove in actual implementation)
+                        return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                if (accountData.hasOwnProperty(ifscCode)) {
+                                    resolve(accountData[ifscCode]); // Resolve with account details
+                                } else {
+                                    reject("Unknown"); // Reject with "Unknown" if IFSC code not found
+                                }
+                            }, 2000); // Simulate 2 seconds delay
+                        });
+                    }
+                
+                    // Function to handle button loading state
+                    function setButtonLoading(loading) {
+                        const verifyBtn = document.getElementById('verifyBtn');
+                        if (loading) {
+                            verifyBtn.innerText = 'Verifying...'; // Change button text to indicate loading
+                            verifyBtn.setAttribute('disabled', true); // Disable the button during loading
+                        } else {
+                            verifyBtn.innerText = 'Verify'; // Restore original button text
+                            verifyBtn.removeAttribute('disabled'); // Enable the button
+                        }
+                    }
+                
+                    // Function to verify IFSC code and display account details (name and bank name)
+                    async function verifyIFSC() {
+                        const ifscCode = document.getElementById('ifsc').value.trim().toUpperCase(); // Get IFSC code input
+                        const username = document.getElementById('userName').value.trim(); // Get username input
+                        const userId = document.getElementById('account_no').value.trim(); // Get logged-in user's ID
+                        
+                        // Display loading state
+                        setButtonLoading(true);
+                
+                        try {
+                            // Fetch account details based on IFSC code and username
+                            const accountDetails = await fetchAccountDetails(ifscCode, username);
+                
+                            // Update UI based on fetched account details
+                            document.getElementById('account_holder_label').value = accountDetails.userName;
+                            document.getElementById('bank_name_label').value = accountDetails.bankName;
+                
+                            // Show success alert
+                            alert(`✅ Successfully verified:\nAccount Holder: ${accountDetails.userName}\nBank Name: ${accountDetails.bankName}`);
+
+                
+                        } catch (error) {
+                            // Handle error (IFSC code not found)
+                            document.getElementById('account_holder_label').value = error;
+                            document.getElementById('bank_name_label').value = "";
+                            alert("Verification failed: IFSC code not found");
+                        } finally {
+                            // Remove loading state
+                            setButtonLoading(false);
+                        }
+                    }
+                </script>
+                <div class="load"><img src="https://i0.wp.com/mir-s3-cdn-cf.behance.net/project_modules/fs/d5f77c104128975.5f5bdc0d6d7b6.gif?ssl=1" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+                <div class="form-group">
+                    <button id="prevSection4" onclick="playAudioAndPrevSection('section3')"><i class="fas fa-arrow-left"></i> Previous Section</button><br><br><br>
+                    <button id="nextSection4" onclick="playAudioAndNextSection('section5')"><i class="fas fa-arrow-right"></i> Next Section</button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div id="section5" class="section">
+                <div class="section-title"><i class="fas fa-lock"></i> Choice Locking Information</div>
+                <div class="scrolling-text">
+                    <span>Welcome to Choice Locking Information Section.</span>
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="college"><i class="fas fa-university"></i> College:</label>
+                    <select id="college" name="college">
+                        <option value="">Select College:</option>
+                        <option value="Biju Pattnaik Higher Secondary School of Science & Education, Bhubaneswar">Biju Pattnaik Higher Secondary School of Science & Education, Bhubaneswar</option>
+                        <option value="Maharishi Higher Secondary School of Natural Law, Bhubaneswar">Maharishi Higher Secondary School of Natural Law, Bhubaneswar</option>
+                        <option value="Raja Madhusudan Dev Higher Secondary School of Science & Education, Patia">Raja Madhusudan Dev Higher Secondary School of Science & Education, Patia</option>
+                        <option value="Sri Jayadev Higher Secondary School of Education & Technology, Naharkanta">Sri Jayadev Higher Secondary School of Education & Technology, Naharkanta</option>
+                        <option value="College of Basic Science & Humanities,Bhubaneswar">College of Basic Science & Humanities,Bhubaneswar</option>
+                        <option value="Rajdhani Higher Secondary School, Bhubaneswar">Rajdhani Higher Secondary School, Bhubaneswar</option>
+                        <option value="Acharya Harihar Higher Secondary School, Chandrasekharpur">Acharya Harihar Higher Secondary School, Chandrasekharpur</option>
+                        <option value="Deb Ray Nayapalli Higher Secondary School, Bhubaneswar">Deb Ray Nayapalli Higher Secondary School, Bhubaneswar</option>
+                        <option value="Kamala Nehru Women's Higher Secondary School, Bhubaneswar">Kamala Nehru Women's Higher Secondary School, Bhubaneswar</option>
+                        <option value="B J B (AUTONOMOUS) COLLEGE, BHUBANESWAR">B J B (AUTONOMOUS) COLLEGE, BHUBANESWAR</option>
+                        <option value="EKAMRA COLLEGE, BHUBANESWAR">EKAMRA COLLEGE, BHUBANESWAR</option>
+                        <option value="P N JUNIOR COLLEGE, KHURDA">P N JUNIOR COLLEGE, KHURDA</option>
+                        <option value="JUPITER +2 SCIENCE COLLEGE, BBSR">JUPITER +2 SCIENCE COLLEGE, BBSR</option>
+                        <option value="ROYAL COLLEGE OF SC & TECH., BBSR">ROYAL COLLEGE OF SC & TECH., BBSR</option>
+                        <option value="KIIT SCIENCE COLLEGE, BHUBANESWAR">KIIT SCIENCE COLLEGE, BHUBANESWAR</option>
+                        <option value="ODISHA +2 SCIENCE COLLEGE, BHUBANESWAR">ODISHA +2 SCIENCE COLLEGE, BHUBANESWAR</option>
+                        <option value="INSTITUTE OF H S EDUCATION, ITER, BBSR">INSTITUTE OF H S EDUCATION, ITER, BBSR</option>
+                        <option value="HI-TECH SCIENCE COLLEGE, BBSR">HI-TECH SCIENCE COLLEGE, BBSR</option>
+                        <option value="ADYANT +2 SCIENCE COLLEGE,BBSR">ADYANT +2 SCIENCE COLLEGE,BBSR</option>
+                        <option value="BHUBANESWAR COLLEGE OF COMP. SC. TECH">BHUBANESWAR COLLEGE OF COMP. SC. TECH</option>
+                    </select>
+                </div>
+            
+                <!-- Add button to trigger college selection -->
+                <button id="addCollegeBtn"><i class="fas fa-plus-circle"></i> Add College</button>
+            
+                <!-- Table to display selected colleges -->
+                <table id="selectedColleges">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-check-circle"></i> Selected Colleges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Selected colleges will be added here -->
+                    </tbody>
+                </table><br>
+                <div class="load"><img src="https://miro.medium.com/v2/resize:fit:800/1*XgwJgF0EcYUShkNjqz8NeA.gif" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+                <div class="form-group">
+                    <button id="prevSection5" onclick="playAudioAndPrevSection('section4')"><i class="fas fa-arrow-left"></i> Previous Section</button><br><br><br>
+                    <button id="nextSection5" onclick="playAudioAndNextSection('section6')"><i class="fas fa-arrow-right"></i> Next Section</button>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Variables to track selected colleges and count
+                    let selectedColleges = [];
+                    const maxColleges = 10; // Maximum colleges a student can select
+            
+                    // Function to add selected college to the table
+                    function addCollegeToTable(collegeName) {
+                        // Check if college already selected
+                        if (selectedColleges.includes(collegeName)) {
+                            alert('This college is already selected.');
+                            return;
+                        }
+            
+                        // Add college to selected list
+                        selectedColleges.push(collegeName);
+            
+                        // Update the table
+                        let tableBody = document.querySelector('#selectedColleges tbody');
+                        let newRow = tableBody.insertRow();
+                        let cell = newRow.insertCell();
+                        let newText = document.createTextNode(collegeName);
+                        cell.appendChild(newText);
+                    }
+            
+                    // Event listener for Add College button click
+document.getElementById('addCollegeBtn').addEventListener('click', function() {
+    // Check if maximum colleges limit reached
+    if (selectedColleges.length >= maxColleges) {
+        alert('You can only select up to ' + maxColleges + ' colleges.');
+        return;
+    }
+
+    // Get the selected college from the dropdown
+    let selectedCollege = document.getElementById('college').value;
+
+    // Check if a college is selected
+    if (selectedCollege === '') {
+        alert('⚠️ Please select a college.');
+        return;
+    }
+
+    // Add the selected college to the table
+    addCollegeToTable(selectedCollege);
+
+    // Play the notification sound
+    let notificationSound = document.getElementById('notificationSound');
+    notificationSound.play();
+});
+
+                });
+            </script>
+                
+            
+           
+
+         <!-- Section 6: Payment Section -->
+<div id="section6" class="section">
+    <div class="section-title"><i class="fas fa-money-check"></i> Payment Information</div>
+    <div class="scrolling-text">
+        <span>Welcome to Payment Information Section.</span>
+    </div>
+    <br><br>
+    <!-- Payment form fields -->
+    <div class="form-group">
+        <label for="amount"><i class="fas fa-dollar-sign"></i> Amount: </label>
+        <input type="text" id="amount" name="amount" value="$500" readonly>
+    </div>
+    
+    <div class="container-cn">
+        <div class="left">
+            <p><i class="fas fa-credit-card"></i> Payment Methods</p>
+            <hr style="border: 1px solid white; margin:0 5px">
+            <class class="methods">
+                <div onclick="showCardDetails()">
+                    <i class="fas fa-credit-card"></i> Payment by Card
+                </div><br>
+                <div onclick="showInternetBanking()">
+                    <i class="fas fa-university"></i> Internet Bankings
+                </div><br>
+                <div onclick="showAppleGooglePay()">
+                    <i class="fas fa-globe" style="color: #007bff;"></i> Online Payment
+                </div><br>
+                <img src="https://i.pinimg.com/originals/c6/a7/2e/c6a72ee4399a682fac7c37ddf44abff7.gif">
+                </class>
+        </div>
+    
+        <div class="center">
+            <a href="https://www.shift4shop.com/credit-card-logos.html">
+                <img alt="Credit Card Logos" title="Credit Card Logos"
+                     src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="450"
+                     height="auto">
+            </a>
+            <hr style="border: 1px solid white; margin: 0 15px;">
+    
+            <!-- Card Details -->
+            <div id="cardDetails" style="display: none;">
+                <form id="paymentForm">
+                    <table>
+                        <tr>
+                            <td colspan="2"><i class="fas fa-money-bill-wave" style="color: #7cfc00;"></i> Payment Amount<h3>$500.00</h3></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name"><i class="fas fa-user" style="color: #20b2aa;"></i> Name on card</label></td>
+                            <td><input type="text" id="name" name="name" placeholder="Enter Your Name On Card: " required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cardnumber"><i class="fas fa-credit-card" style="color: pink;"></i> Card Number</label></td>
+                            <td><input type="number" id="cardnumber" name="cardnumber"placeholder="Enter Your Card Number: " required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="expiry"><i class="fas fa-calendar-alt" style="color: blueviolet;"></i> Expiry date</label></td>
+                            <td><input type="text" id="expiry" name="expiry" placeholder="MM/YY" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="code"><i class="fas fa-lock" style="color: yellow;"></i> Security Code</label></td>
+                            <td><input type="number" id="code" name="code" placeholder="Enter the Security Code: " required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="zip"><i class="fas fa-map-marker-alt" style="color: #00ced1;"></i> ZIP/Postal Code</label></td>
+                            <td><input type="number" id="zip" name="zip" placeholder="Enter the ZIP/Postal Code: " required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <button type="button" onclick="submitPayment('card')"><i class="fas fa-money-check-alt " style="color: #007bff;"></i>
+                                     Pay $500.00</button>
+                            </td>
+                        </tr>
+                        
+                        
+                    </table>
+                    
+                       
+                    
+                </form>
+                <img src="https://cdn.dribbble.com/users/1280935/screenshots/6974685/media/ec4c386222b837da0ff6eabec3f59ba3.gif"height="200px" width="190px">
+            </div>
+    
+            <!-- Internet Banking Interface -->
+            <div id="internetBankingInterface" style="display: none;">
+                <h2>Internet Banking</h2>
+                <form id="internetBankingForm">
+                    <label for="bank"><i class="fas fa-university" style="color: blue;"></i> Select your Bank:</label>
+                    <select id="bank" name="bank" required>
+                        <option value="">Select your Bank:</option>
+                        <option value="bank1">State Bank Of India</option>
+                        <option value="bank2">Union Bank Of India</option>
+                        <option value="bank3">Central Bank Of India</option>
+                    </select><br><br>
+                    <label for="username"><i class="fas fa-user" style="color: cyan;"></i> Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter the Username: " required><br><br>
+                    <label for="password"><i class="fas fa-lock" style="color: green;"></i> Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter the Password: " required><br><br>
+                    <button type="button" onclick="submitPayment('internetBanking')"><i class="fas fa-sign-in-alt" style="color: #3312d6;"></i> Login & Pay</button>
+                </form>
+                <img src="https://apps.riopay.in/images/Biometric-final.gif"height="200px" width="190px">
+            </div>
+    
+            <!-- Apple/Google Pay Interface -->
+            <div id="appleGooglePayInterface" style="display: none;">
+                <h2>PhonePe/Google Pay</h2>
+                <button onclick="showQRCode()"><i class="fas fa-qrcode" style="color: #ff69b4;"></i> Show QR Code</button>
+                <div class="qr-code-container" id="qrCodeSection">
+                    <img id="qrCodeImage" src="" alt="QR Code">
+                    <p id="qrCodeMessage">This QR code is valid for 10 seconds.</p>
+                </div>
+                <button type="button" onclick="submitPayment('appleGooglePay')"><i class="fas fa-check" style="color: #ffd700;"></i> Done</button>
+                <img src="https://cdn.dribbble.com/users/1523313/screenshots/13591454/media/b5c05bf8f1512759f199bdf613995297.gif""height="350px" width="300px">
+            </div>
+    
+            <!-- Card Images -->
+            <div class="card-images">
+                <img src="https://d28wu8o6itv89t.cloudfront.net/images/Visadebitcardpng-1599584312349.png"
+                     alt="Visa Card" class="card-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMO00YUkVrNvQc-p8EA-uAbNsI3Rh0Oz1yBA&s"
+                     alt="Rupay Card" class="card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/1280px-MasterCard_Logo.svg.png"
+                     alt="MasterCard" class="card-image">
+            </div>
+    
+            <!-- Payment Success Message -->
+            <div class="success-message" id="paymentSuccessMessage">
+                <i class="fas fa-check-circle" style="color: green;"></i> Payment successful! Thank you for your payment.
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <button id="prevSection6" onclick="playAudioAndPrevSection('section5')"><i class="fas fa-arrow-left" style="color: blue;"></i> Previous Section</button>
+    </div>
+    <div class="load"><img src="https://transmonqa.com/wp-content/uploads/2023/05/image_processing20210401-29100-ess23a.gif" alt="Loading GIF" style="width: 100%;height: 500px;"></div>
+    
+    <div class="form-group">
+        
+        <br><br>
+        <button id="submitForm" onclick="submitForm()"><i class="fas fa-file-upload" style="color: gold;"></i>
+             Submit</button>
+    </div>
+</div>
+
+        </main>
+    </div>
+
+    <!-- Table to display submitted data -->
+    <div id="submittedData">
+        <h2>Submitted Data</h2>
+        <table id="dataTable" border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile No.</th>
+                    <th>Email ID</th>
+                    <th>Date of Birth</th>
+                    <th>Course</th>
+                    <th>Marks Obtained</th>
+                    <th>Payment</th>
+                    <th>Profile Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+<script>
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const isActive = section.classList.contains('active');
+
+        // Hide all sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // Show clicked section if it was not active, otherwise hide it
+        if (!isActive) {
+            section.classList.add('active');
+        }
+
+        // Highlight active menu item
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            if (item.getAttribute('onclick').includes(sectionId)) {
+                item.classList.add('active-menu-item');
+            } else {
+                item.classList.remove('active-menu-item');
+            }
+        });
+    }
+}
+
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const offsetTop = section.offsetTop;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+        
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(sec => {
+            sec.classList.remove('active');
+        });
+        section.classList.add('active');
+    }
+}
+    
+    function logout() {
+    localStorage.removeItem('userData'); 
+    window.location.href = 'login.html'; 
+}
+
+
+   // Function to play audio and show the next section
+function playAudioAndNextSection(nextSectionId) {
+    var audio = document.getElementById('buttonSoundNext');
+    audio.play();
+    
+    // Proceed to the next section immediately
+    nextSection(nextSectionId);
+}
+
+// Function to play audio and show the previous section
+function playAudioAndPrevSection(prevSectionId) {
+    var audio = document.getElementById('buttonSoundPrev');
+    audio.play();
+    
+    // Proceed to the previous section immediately
+    prevSection(prevSectionId);
+}
+
+// Function to show next section and hide current section
+function nextSection(nextSectionId) {
+    // Hide all sections
+    for (let i = 1; i <= 6; i++) {
+        document.getElementById("section" + i).classList.remove("active");
+    }
+    
+    // Show the next section
+    document.getElementById(nextSectionId).classList.add("active");
+}
+
+// Function to show previous section and hide current section
+function prevSection(prevSectionId) {
+    // Hide all sections
+    for (let i = 1; i <= 6; i++) {
+        document.getElementById("section" + i).classList.remove("active");
+    }
+    
+    // Show the previous section
+    document.getElementById(prevSectionId).classList.add("active");
+}
+
+
+// Function to validate if all sections including payment are completed
+function validateForm() {
+    const sections = document.querySelectorAll('.section');
+    let isValid = true;
+
+    for (let i = 0; i < sections.length; i++) {
+        const inputs = sections[i].querySelectorAll('input[required], select[required], textarea[required]');
+        
+        for (let j = 0; j < inputs.length; j++) {
+            if (inputs[j].value.trim() === '') {
+                isValid = false;
+                inputs[j].classList.add('invalid');
+                alert(`⚠️ Please fill out all required fields in section ${i + 1}.`);
+                return false; 
+            }
+        }
+
+        if (!isValid) {
+            break; 
+        }
+    }
+
+    return isValid; 
+}
+
+   
+document.addEventListener('DOMContentLoaded', function() {
+    // Load form data from localStorage if available
+    const formData = JSON.parse(localStorage.getItem("formData"));
+    if (formData) {
+        document.getElementById("userName").value = formData.userName || "";
+        document.getElementById("userMobile").value = formData.userMobile || "";
+        document.getElementById("userEmail").value = formData.userEmail || "";
+        document.getElementById("userdob").value = formData.dob || "";
+        document.getElementById("course").value = formData.course || "";
+        document.getElementById("marks").value = formData.marks || "";
+        document.getElementById("percentage").value = formData.percentage || "";
+        document.getElementById("maths").value = formData.subjects.Mathematics || "";
+        document.getElementById("father").value = formData.father || "";
+        document.getElementById("mother").value = formData.mother || "";
+        document.getElementById("gender").value = formData.gender || "";
+        document.getElementById("aadhar").value = formData.aadhar || "";
+        document.getElementById("parent_mobile").value = formData.parent_mobile || "";
+        document.getElementById("maths").value = formData.subjects.Mathematics || "";
+        document.getElementById("parent_mobile").value = formData.parent_mobile || "";
+        document.getElementById("blood_group").value = formData.blood_group || "";
+        document.getElementById("religion").value = formData.religion || "";
+        document.getElementById("nationality").value = formData.nationality || "";
+        document.getElementById("mother_tongue").value = formData.mother_tongue || "";
+        document.getElementById("present_address").value = formData.present_address || "";
+        document.getElementById("permanent_address").value = formData.permanent_address || "";
+        document.getElementById("country").value = formData.country || "";
+        document.getElementById("state").value = formData.state || "";
+        document.getElementById("district").value = formData.district || "";
+        document.getElementById("block").value = formData.subjects.block || "";
+        document.getElementById("neet_jee_details").value = formData.neet_jee_details || "";
+        document.getElementById("orphan").value = formData.orphan || "";
+        document.getElementById("reservation_details").value = formData.reservation_details || "";
+        document.getElementById("account_no").value = formData.account_no || "";
+        document.getElementById("ifsc").value = formData.ifsc || "";
+        document.getElementById("bank_name_label").value = formData.bank_name_label || "";
+        document.getElementById("amount").value = formData.amount || "";
+        // Set profile pic preview
+        document.getElementById("preview-image").src = formData.profilePic || "";
+    } else {
+        var username = localStorage.getItem('userName');
+
+if (!username) {
+    alert("Error: Required user information not found in localStorage.");
+} else {
+    alert("👋 Welcome, " + username + "!");
+}
+    }
+});
+
+function playAudio(filePath, onEndCallback) {
+    const audio = new Audio(filePath);
+    audio.addEventListener('ended', onEndCallback);
+    audio.play();
+}
+
+function submitForm() {
+    if (validateForm()) {
+        const formData = {
+            userName: document.getElementById("userName").value,
+            userMobile: document.getElementById("userMobile").value,
+            userEmail: document.getElementById("userEmail").value,
+            dob: formatDate(document.getElementById('userdob').value),
+            course: document.getElementById("course").value,
+            marks: document.getElementById("marks").value,
+            percentage: document.getElementById("percentage").value,
+            subjects: {
+                Mathematics: document.getElementById("maths").value,
+                English: document.getElementById("english").value,
+                MIL: document.getElementById("odia").value,
+                "Social Science": document.getElementById("socialScience").value,
+                "General Science": document.getElementById("generalScience").value,
+                "Hindi/Sanskrit": document.getElementById("hindiSanskrit").value
+            },
+            father: document.getElementById("father").value,
+            mother: document.getElementById("mother").value,
+            gender: document.getElementById("gender").value,
+            aadhar: document.getElementById("aadhar").value,
+            pin: document.getElementById("pin").value,
+            parent_mobile: document.getElementById("parent_mobile").value,
+            blood_group: document.getElementById("blood_group").value,
+            religion: document.getElementById("religion").value,
+            nationality: document.getElementById("nationality").value,
+            mother_tongue: document.getElementById("mother_tongue").value,
+            present_address: document.getElementById("present_address").value,
+            permanent_address: document.getElementById("permanent_address").value,
+            country: document.getElementById("country").value,
+            state: document.getElementById("state").value,
+            district: document.getElementById("district").value,
+            block: document.getElementById("block").value,
+            neet_jee_details: document.getElementById("neet_jee_details").value,
+            orphan: document.querySelector('input[name="orphan"]:checked').value,
+            reservation_details: document.getElementById("reservation_details").value,
+            profilePic: document.getElementById("preview-image").src,
+            account_no: document.getElementById("account_no").value,
+            ifsc: document.getElementById("ifsc").value,
+            bank_name_label: document.getElementById("bank_name_label").value,
+            amount: "Payment Successful", // Set payment status here
+            selectedColleges: getSelectedColleges() // Function to get selected colleges
+        };
+
+        function handleSuccessAudioEnd() {
+            // Store formData in localStorage
+            localStorage.setItem('formData', JSON.stringify(formData));
+
+            // Alert user before redirection
+            alert("✅ Dear " + formData.userName + ", Congratulations! Form submitted successfully!");
+
+            // Redirect to display-data.html
+            window.location.href = 'dashboard.html';
+        }
+
+        function handleErrorAudioEnd() {
+            alert("⚠️ Please fill in all required fields before submitting.");
+        }
+
+        // Play success audio and submit form after it ends
+        playAudio('4.mp3', handleSuccessAudioEnd);
+
+    } else {
+        // Play error audio and show alert after it ends
+        playAudio('5.mp3', handleErrorAudioEnd);
+    }
+}
+
+ 
+
+
+
+// Function to get selected colleges from the table
+function getSelectedColleges() {
+    const tableRows = document.querySelectorAll('#selectedColleges tbody tr');
+    let colleges = [];
+
+    tableRows.forEach(row => {
+        let collegeName = row.cells[0].textContent.trim(); // Adjust the index if needed
+        colleges.push(collegeName);
+    });
+
+    return colleges;
+}
+
+
+
+
+
+
+function logout() {
+    // Clear localStorage on logout
+    localStorage.removeItem('formData');
+    alert("✅ Logout Successful!!!!!!");
+    // Redirect to the login page or homepage after logout
+    window.location.href = 'login.html'; // Replace with your actual login or homepage URL
+}
+
+
+// Example function to reset form fields (if needed)
+function resetForm() {
+    document.getElementById("userName").value = "";
+    document.getElementById("userMobile").value = "";
+    document.getElementById("userEmail").value = "";
+    document.getElementById("userdob").value = "";
+    document.getElementById("course").value = "";
+    document.getElementById("marks").value = "";
+    document.getElementById("preview-image").src = "https://t4.ftcdn.net/jpg/05/65/22/41/360_F_565224180_QNRiRQkf9Fw0dKRoZGwUknmmfk51SuSS.jpg"; // Reset preview image
+}
+
+// Retrieve user data from localStorage (example)
+const formData = JSON.parse(localStorage.getItem("formData"));
+if (formData) {
+    document.getElementById("userName").value = formData.userName || "";
+    document.getElementById("userMobile").value = formData.userMobile || "";
+    document.getElementById("userEmail").value = formData.userEmail || "";
+    document.getElementById("userdob").value = formData.dob || "";
+    document.getElementById("course").value = formData.course || "";
+    document.getElementById("marks").value = formData.marks || "";
+    document.getElementById("percentage").value = formData.percentage || "";
+    // Set values for subjects, interests, and profile pic preview accordingly
+    // Example:
+    document.getElementById("maths").value = formData.subjects.Mathematics || "";
+    // Set profile pic preview
+    document.getElementById("preview-image").src = formData.profilePic || "";
+} else {
+   // alert("Error: Required user information not found in localStorage.");
+}
+
+    // Retrieve user data from localStorage (example)
+    const userName = localStorage.getItem("userName");
+    const userMobile = localStorage.getItem("userMobile");
+    const userEmail = localStorage.getItem("userEmail");
+
+    // Populate personal information fields if available in localStorage
+    if (userName && userMobile && userEmail) {
+        document.getElementById("userName").value = userName;
+        document.getElementById("userMobile").value = userMobile;
+        document.getElementById("userEmail").value = userEmail;
+
+        // Mark the first section as active initially
+        document.getElementById("section1").classList.add("active");
+    } else {
+        //alert("Error: Required user information not found in localStorage.");
+    }
+</script>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview-image');
+            output.src = reader.result;
+
+            // Dynamically adjust CSS of .image-preview
+            var imagePreview = document.getElementById('image-preview');
+            imagePreview.style.border = '2px dashed #ccc'; // Example: change border style
+            imagePreview.style.padding = '20px'; // Example: change padding
+            imagePreview.style.maxWidth = '300px'; // Example: change max-width
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    
+function calculateTotalMarks() {
+    // Get input values
+    const mathsMarks = parseFloat(document.getElementById('maths').value) || 0; // Convert to number, default to 0 if empty
+    const englishMarks = parseFloat(document.getElementById('english').value) || 0;
+    const odiaMarks = parseFloat(document.getElementById('odia').value) || 0;
+    const socialScienceMarks = parseFloat(document.getElementById('socialScience').value) || 0;
+    const generalScienceMarks = parseFloat(document.getElementById('generalScience').value) || 0;
+    const hindiSanskritMarks = parseFloat(document.getElementById('hindiSanskrit').value) || 0;
+
+    // Calculate total marks
+    const totalMarks = mathsMarks + englishMarks + odiaMarks + socialScienceMarks + generalScienceMarks + hindiSanskritMarks;
+
+    // Display total marks
+    document.getElementById('marks').value = totalMarks;
+
+    // Calculate percentage
+    const totalSubjects = 6; // Assuming there are 6 subjects
+    const maxMarksPerSubject = 100; // Assuming each subject has a maximum of 100 marks
+    const percentage = (totalMarks / (totalSubjects * maxMarksPerSubject)) * 100;
+
+    // Display percentage with two decimal places
+    
+    document.getElementById('percentage').value = percentage.toFixed(2); // Round to 2 decimal places
+}
+function submitPayment() {
+    // Simulate successful payment submission
+    alert("✅ Payment submitted successfully!");
+
+}
+</script>
+<script>
+    function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+            item.style.backgroundColor = getRandomColor();
+        });
+        item.addEventListener('mouseleave', function() {
+            item.style.backgroundColor = ''; // Reset to default or remove this line if not needed
+        });
+    });
+});
+
+</script>
+
+<script>
+    function captureAndRedirect() {
+        // Capture form data
+        
+    
+        // Redirect to display-data.html
+        window.location.href = 'dashboard.html';
+    }
+    </script>
+
+
+<script>
+   let cardDetails = document.getElementById('cardDetails');
+    let internetBankingInterface = document.getElementById('internetBankingInterface');
+    let appleGooglePayInterface = document.getElementById('appleGooglePayInterface');
+    let qrCodeSection = document.getElementById('qrCodeSection');
+    let qrCodeImage = document.getElementById('qrCodeImage');
+    let qrCodeMessage = document.getElementById('qrCodeMessage');
+    let paymentSuccessMessage = document.getElementById('paymentSuccessMessage');
+    let sessionTimeout;
+
+    function showCardDetails() {
+        cardDetails.style.display = 'block';
+        internetBankingInterface.style.display = 'none';
+        appleGooglePayInterface.style.display = 'none';
+        qrCodeSection.style.display = 'none';
+        paymentSuccessMessage.style.display = 'none';
+        clearTimeout(sessionTimeout);
+    }
+
+    function showInternetBanking() {
+        cardDetails.style.display = 'none';
+        internetBankingInterface.style.display = 'block';
+        appleGooglePayInterface.style.display = 'none';
+        qrCodeSection.style.display = 'none';
+        paymentSuccessMessage.style.display = 'none';
+        startSessionTimer();
+    }
+
+    function showAppleGooglePay() {
+        cardDetails.style.display = 'none';
+        internetBankingInterface.style.display = 'none';
+        appleGooglePayInterface.style.display = 'block';
+        qrCodeSection.style.display = 'none'; // Hide QR code initially
+        paymentSuccessMessage.style.display = 'none';
+        startSessionTimer();
+    }
+
+    function startSessionTimer() {
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(() => {
+            alert("Session expired");
+            resetInterfaces();
+        }, 2 * 60 * 1000); // 2 minutes
+    }
+
+    function resetInterfaces() {
+        cardDetails.style.display = 'none';
+        internetBankingInterface.style.display = 'none';
+        appleGooglePayInterface.style.display = 'none';
+        qrCodeSection.style.display = 'none';
+        paymentSuccessMessage.style.display = 'none';
+    }
+
+    function showQRCode() {
+        qrCodeImage.src = generateQRCode();
+        qrCodeSection.style.display = 'flex';
+        setTimeout(() => {
+            qrCodeSection.style.display = 'none';
+            showPaymentSuccess();
+        }, 10000); // 10 seconds
+    }
+
+    function generateQRCode() {
+        // Replace with actual QR code generation logic if needed
+        return 'https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld!&size=200x200';
+    }
+
+    function submitPayment(paymentMethod) {
+        switch (paymentMethod) {
+            case 'card':
+                if (validateCardDetails()) {
+                    alert('Payment Successful via Card.');
+                    showPaymentSuccess();
+                    redirectToDisplayPage();
+                } else {
+                    alert("⚠️ Please fill all required fields.");
+
+                }
+                break;
+            case 'internetBanking':
+                if (validateInternetBankingDetails()) {
+                    alert("💳 Payment successful via Internet Banking.");
+                    showPaymentSuccess();
+                    redirectToDisplayPage();
+                } else {
+                    alert("⚠️ Please fill all required fields.");
+                }
+                break;
+            case 'appleGooglePay':
+            alert("📱 Payment successful via PhonePe/Google Pay.");
+                showPaymentSuccess();
+                redirectToDisplayPage();
+                break;
+            default:
+            alert("❌ Invalid payment method.");
+                break;
+        }
+    }
+
+    function validateCardDetails() {
+        let name = document.getElementById('name').value.trim();
+        let cardnumber = document.getElementById('cardnumber').value.trim();
+        let expiry = document.getElementById('expiry').value.trim();
+        let code = document.getElementById('code').value.trim();
+        let zip = document.getElementById('zip').value.trim();
+
+        return name !== '' && cardnumber !== '' && expiry !== '' && code !== '' && zip !== '';
+    }
+
+    function validateInternetBankingDetails() {
+        let bank = document.getElementById('bank').value.trim();
+        let username = document.getElementById('username').value.trim();
+        let password = document.getElementById('password').value.trim();
+
+        return bank !== '' && username !== '' && password !== '';
+    }
+
+    function showPaymentSuccess() {
+        paymentSuccessMessage.style.display = 'block';
+        setTimeout(() => {
+            resetInterfaces();
+        }, 5000); // Reset after 5 seconds
+    }
+
+   
+</script>
+<script>
+    // Function to format date as dd-mm-yyyy
+    function formatDate(dateString) {
+            const parts = dateString.split('-');
+            const year = parts[0];
+            const month = parts[1];
+            const day = parts[2];
+
+            return `${day} - ${month} - ${year}`;
+        }
+</script>
+
+   
+</body>
+</html>

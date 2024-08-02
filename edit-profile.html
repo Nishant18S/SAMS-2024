@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.pngimg.me/thumb/f/720/m2H7i8K9K9m2H7A0.jpg">
+    <title>Edit Profile</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="email"]:hover,
+        input[type="date"]:hover {
+            border-color: #007bff;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <marquee style="color:rgb(49, 226, 14)">Welcome to Student Academic Management System (SAMS) Edit Profile Page.</marquee>
+    <h1>Edit Profile</h1>
+
+    <form id="editProfileForm">
+        <label for="userName">Name:</label>
+        <input type="text" id="userName" name="userName">
+
+        <label for="userMobile">Mobile No.:</label>
+        <input type="text" id="userMobile" name="userMobile">
+
+        <label for="userEmail">Email ID:</label>
+        <input type="email" id="userEmail" name="userEmail" readonly>
+
+        <label for="userDob">Date of Birth:</label>
+        <input type="date" id="userDob" name="userDob">
+
+        <label for="course">Course:</label>
+        <input type="text" id="course" name="course" readonly>
+
+        <label for="marks">Marks Obtained:</label>
+        <input type="text" id="marks" name="marks" readonly>
+
+        <label for="percentage">Percentage:</label>
+        <input type="text" id="percentage" name="percentage" readonly>
+
+        <label for="amount">Payments:</label>
+        <input type="text" id="amount" name="amount" readonly>
+
+        <label for="profilePic">Profile Photo:</label>
+        <input type="text" id="profilePic" name="profilePic" readonly>
+
+        <button type="button" onclick="updateProfile()">Save Changes</button>
+    </form>
+</div>
+
+<script>
+    // Function to retrieve and display submitted data for editing
+    function displayProfileData() {
+        // Retrieve form data from localStorage
+        const formData = JSON.parse(localStorage.getItem('formData'));
+
+        if (formData) {
+            // Display profile information in the form
+            document.getElementById('userName').value = formData.userName;
+            document.getElementById('userMobile').value = formData.userMobile;
+            document.getElementById('userEmail').value = formData.userEmail;
+            document.getElementById('userDob').value = formData.dob;
+            document.getElementById('course').value = formData.course;
+            document.getElementById('marks').value = formData.marks;
+            document.getElementById('percentage').value = formData.percentage;
+            document.getElementById('amount').value = formData.amount;
+            document.getElementById('profilePic').value = formData.profilePic;
+        }
+    }
+
+    // Function to update profile data
+    function updateProfile() {
+        const newName = document.getElementById('userName').value;
+        const newMobile = document.getElementById('userMobile').value;
+        const newDob = document.getElementById('userDob').value;
+
+        // Fetch existing data from localStorage
+        const formData = JSON.parse(localStorage.getItem('formData'));
+
+        // Update the fields that can be edited
+        formData.userName = newName;
+        formData.userMobile = newMobile;
+        formData.dob = newDob;
+
+        // Store updated data back into localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+        alert("Information Update Sucessfully!!!!");
+        // Redirect to display-data.html after update
+        window.location.href = 'display-data.html';
+    }
+
+    // Call the function to display profile data when the page loads
+    displayProfileData();
+</script>
+
+</body>
+</html>
