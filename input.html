@@ -4,87 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="https://play-lh.googleusercontent.com/sVy9AmOKtsTq9uv5RsgjOJzI2BM3RnROOmQfMaJfNpDSai5N2ECByqTQSqJBErExpaUc">
-    <script>
-      // Disable right-click
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-    
-    function ctrlShiftKey(e, keyCode) {
-    return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-    }
-    
-    document.onkeydown = (e) => {
-    // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-    if (
-      event.keyCode === 123 ||
-      ctrlShiftKey(e, 'I') ||
-      ctrlShiftKey(e, 'J') ||
-      ctrlShiftKey(e, 'C') ||
-      (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-    )
-      return false;
-    };
-    </script>
-    
-    
     <title>Student Academic Management System (SAMS)</title>
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Your existing CSS styles */
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Prevents scrolling of video */
-    position: relative;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
 
-#bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Ensures video is behind other content */
-}
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
 
-.container {
-    background-color: rgba(210, 201, 24, 0.8); /* Adjusted background color with opacity */
-    padding: 20px;
-    border-radius: 8px;
-}
+        .container {
+            background-color: rgba(210, 201, 24, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
         .form-group {
             margin-bottom: 20px;
-            position: relative; /* Add relative positioning for icon placement */
+            position: relative;
         }
+
         .form-group label {
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
         }
+
         .form-group input {
-            width: calc(100% - 40px); /* Adjusted for icon width */
+            width: calc(100% - 40px);
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            padding-left: 40px; /* Space for icon */
+            padding-left: 40px;
         }
+
         .form-group .fa {
             position: absolute;
-            left: 10px; /* Adjust icon position */
+            left: 10px;
             top: 65%;
             transform: translateY(-50%);
             color: #240fe1;
-            font-size: 18px; /* Adjust icon size */
+            font-size: 18px;
         }
-        
+
         .form button {
             width: 100%;
             padding: 10px;
@@ -100,6 +82,7 @@
         .form button:hover {
             background-color: rgb(238, 29, 113);
         }
+
         .form-group a {
             display: block;
             text-align: center;
@@ -107,9 +90,11 @@
             color: blue;
             text-decoration: none;
         }
+
         .form-group a:hover {
             text-decoration: underline;
         }
+
         .form-links {
             text-align: center;
             margin-top: 10px;
@@ -124,278 +109,194 @@
         .form-links a:hover {
             text-decoration: underline;
         }
-        i
-        {
+
+        i {
             color: blue;
         }
 
         .form-links .fa {
             margin-right: 5px;
         }
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            color: #fff;
-            background-color: green;
-            transition: background-color 0.3s ease;
-        }
-       
+
         .password-strength {
-    margin-top: 10px;
-    font-size: 14px;
-    font-style: italic;
-  }
-  .weak {
-    color: red;
-  }
-  .medium {
-    color: orange;
-  }
-  .strong {
-    color: green;
-  }
-  
-  .password-toggle {
-    position: absolute;
-    top: 70%;
-    right: 40px;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-  .email-validation {
-    font-size: 12px;
-    color: red;
-    display: none;
-  }
-        
+            margin-top: 10px;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .weak {
+            color: red;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 70%;
+            right: 40px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .email-validation {
+            font-size: 12px;
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    
     <video autoplay muted loop id="bg-video">
         <source src="https://videos.pexels.com/video-files/2324166/2324166-sd_640_360_25fps.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     
-<div class="container">
-    
-    <marquee style="color:red">Welcome to Student Academic Management System (SAMS) for Register.</marquee>
-    <h1 style="text-align:center">Registration</h1>
-
-    <!-- Registration Form -->
-    <form id="registrationForm">
-        <div class="form-group">
-            <label for="name"><i class="fa fa-user"></i> Enter your Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your Name" required>
-        </div>
-        <div class="form-group">
-            <label for="password"><i class="fa fa-lock"></i> Enter your Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
-            <span class="password-toggle" onclick="togglePasswordVisibility('password')">
-              <i class="fa fa-eye" id="password-toggle-icon"></i>
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="repassword"><i class="fa fa-lock"></i> Re-Enter your Password:</label>
-            <input type="password" id="repassword" name="repassword" placeholder="Re-Enter your Password" required>
-            <span class="password-toggle" onclick="togglePasswordVisibility('repassword')">
-              <i class="fa fa-eye" id="repassword-toggle-icon"></i>
-            </span>
-          </div>
-          <div id="password-strength" class="password-strength"></div>
-        <div class="form-group">
-            <label for="mobile"><i class="fa fa-phone"></i> Enter your Mobile No.:</label>
-            <input type="tel" id="mobile" name="mobile" placeholder="Enter your Mobile No." required>
-        </div>
-        <div class="form-group">
-            <label for="email"><i class="fa fa-envelope"></i> Enter your E-Mail ID.:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your E-Mail ID." required>
-            <span class="email-validation" id="email-validation"></span>
-          </div>
+    <div class="container">
+        <marquee style="color:red">Welcome to Student Academic Management System (SAMS) for Register.</marquee>
+        <h1 style="text-align:center">Registration</h1>
         
-        <div class="form">
-            <button type="button" onclick="registerUser()"><i class="fa fa-sign-in-alt"></i> Register</button><br><br>
-            
-        </div>
-        <div class="form">
-            <button type="reset"><i class="fa fa-sync-alt"></i> Reset</button>
-        </div>
-        
-        <div class="form-links">
-            <a href="login.html"><i class="fa fa-user-plus"></i> Login</a>
-            <a href="forgot_password.html"><i class="fa fa-question-circle"></i> Forgot Password?</a>
-        </div>
-    </form>
+        <!-- Registration Form -->
+        <form id="registrationForm" action="input.php" method="POST">
+            <div class="form-group">
+                <label for="name"><i class="fa fa-user"></i> Enter your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fa fa-lock"></i> Enter your Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+                    <i class="fa fa-eye" id="password-toggle-icon"></i>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="repassword"><i class="fa fa-lock"></i> Re-Enter your Password:</label>
+                <input type="password" id="repassword" name="repassword" placeholder="Re-Enter your Password" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility('repassword')">
+                    <i class="fa fa-eye" id="repassword-toggle-icon"></i>
+                </span>
+            </div>
+            <div id="password-strength" class="password-strength"></div>
+            <div class="form-group">
+                <label for="mobile"><i class="fa fa-phone"></i> Enter your Mobile No.:</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your Mobile No." required>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fa fa-envelope"></i> Enter your E-Mail ID.:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your E-Mail ID." required>
+                <span class="email-validation" id="email-validation"></span>
+            </div>
+            <div class="form">
+                <button type="submit"><i class="fa fa-sign-in-alt"></i> Register</button><br><br>
+                <button type="reset"><i class="fa fa-sync-alt"></i> Reset</button>
+            </div>
+            <div class="form-links">
+                <a href="login.html"><i class="fa fa-user-plus"></i> Login</a>
+                <a href="forgot_password.html"><i class="fa fa-question-circle"></i> Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+    <img src="https://miro.medium.com/v2/resize:fit:1400/1*1oTDnw0B32cdT0J1fBmKWg.gif">
     
-</div>
-<img src="https://miro.medium.com/v2/resize:fit:1400/1*1oTDnw0B32cdT0J1fBmKWg.gif">
-<script>
-    const emailInput = document.getElementById('email');
-    const emailValidation = document.getElementById('email-validation');
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    emailInput.addEventListener('input', function() {
-      const email = emailInput.value.trim().toLowerCase();
-      if (email.endsWith('@gmail.com') || email.endsWith('@yahoo.com')) {
-        emailValidation.style.display = 'none';
-      } else {
-        emailValidation.textContent = 'Please enter a Gmail or Yahoo email address.';
-        emailValidation.style.display = 'inline-block';
-      }
-    });
-  </script>
-<script>
-    function togglePasswordVisibility(inputId) {
-      const input = document.getElementById(inputId);
-      const icon = document.getElementById(inputId + '-toggle-icon');
-      
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      } else {
-        input.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      }
-    }
-  </script>
-<script>
-    const passwordInput = document.getElementById('password');
-    const repasswordInput = document.getElementById('repassword');
-    const passwordStrength = document.getElementById('password-strength');
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
 
-    // Event listener for password input
-    passwordInput.addEventListener('input', function() {
-      const password = passwordInput.value;
-      const strength = getPasswordStrength(password);
-      updatePasswordStrength(strength);
-    });
+        document.onkeydown = (e) => {
+            if (
+                e.keyCode === 123 ||
+                ctrlShiftKey(e, 'I') ||
+                ctrlShiftKey(e, 'J') ||
+                ctrlShiftKey(e, 'C') ||
+                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+            ) {
+                return false;
+            }
+        };
 
-    // Event listener for re-enter password input
-    repasswordInput.addEventListener('input', function() {
-      const password = passwordInput.value;
-      const repassword = repasswordInput.value;
-      if (password !== repassword) {
-        updatePasswordStrength('Passwords do not match');
-      } else {
-        const strength = getPasswordStrength(password);
-        updatePasswordStrength(strength);
-      }
-    });
+        const emailInput = document.getElementById('email');
+        const emailValidation = document.getElementById('email-validation');
 
-    // Function to calculate password strength
-    function getPasswordStrength(password) {
-      if (password.length < 6) {
-        return 'Weak';
-      }
+        emailInput.addEventListener('input', function() {
+            const email = emailInput.value.trim().toLowerCase();
+            if (email.endsWith('@gmail.com') || email.endsWith('@yahoo.com')) {
+                emailValidation.style.display = 'none';
+            } else {
+                emailValidation.textContent = 'Please enter a Gmail or Yahoo email address.';
+                emailValidation.style.display = 'inline-block';
+            }
+        });
 
-      // Regular expressions to check for presence of lowercase, uppercase, and special characters
-      const hasLowercase = /[a-z]/.test(password);
-      const hasUppercase = /[A-Z]/.test(password);
-      const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(`${inputId}-toggle-icon`);
 
-      // Check if all required character types are present
-      if (hasLowercase && hasUppercase && hasSpecial) {
-        return 'Strong';
-      } else {
-        return 'Medium';
-      }
-    }
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
 
-    // Function to update password strength display and apply dynamic CSS
-    function updatePasswordStrength(strength) {
-      passwordStrength.textContent = `Password strength: ${strength}`;
-      passwordStrength.className = 'password-strength'; // Reset classes
-      
-      if (strength === 'Weak') {
-        passwordStrength.classList.add('weak');
-      } else if (strength === 'Medium') {
-        passwordStrength.classList.add('medium');
-      } else if (strength === 'Strong') {
-        passwordStrength.classList.add('strong');
-      } else {
-        // For passwords not matching case
-        passwordStrength.classList.add('weak');
-      }
-    }
-  </script>
-<script>
-    function registerUser() {
-      const name = document.getElementById("name").value;
-      const password = document.getElementById("password").value;
-      const mobile = document.getElementById("mobile").value;
-      const email = document.getElementById("email").value;
+        function updatePasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthText = document.getElementById('password-strength');
+            let strength = 'Weak';
+            let color = 'red';
 
-      // Validate if all required fields are filled
-      if (name.trim() === '' || password.trim() === '' || email.trim() === '') {
-        alert("⚠️ Please fill in all required fields.");
-        return;
-      }
+            if (password.length > 8) {
+                strength = 'Medium';
+                color = 'orange';
+                if (password.match(/[A-Z]/) && password.match(/[0-9]/)) {
+                    strength = 'Strong';
+                    color = 'green';
+                }
+            }
 
-      // Validate password strength
-      const passwordStrength = getPasswordStrength(password);
-      if (passwordStrength === 'Weak' || passwordStrength === 'Medium') {
-        alert("🔐 Please choose a stronger Password.");
-        return;
-      }
+            strengthText.textContent = `Password Strength: ${strength}`;
+            strengthText.className = `password-strength ${strength.toLowerCase()}`;
+        }
 
-      // Validate email format
-      if (!isValidEmail(email)) {
-        alert("📧 Please enter a valid email address.");
-        return;
-      }
+        document.getElementById('password').addEventListener('input', updatePasswordStrength);
 
-      // Store user data in localStorage
-      localStorage.setItem("userName", name);
-      localStorage.setItem("userPassword", password);
-      localStorage.setItem("userMobile", mobile);
-      localStorage.setItem("userEmail", email);
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-      // Show alert for successful registration
-      alert("✅ Registration successful! Please log in.");
+            const password = document.getElementById('password').value;
+            const repassword = document.getElementById('repassword').value;
 
-      // Redirect to login page after registration
-      window.location.href = "login.html";
-    }
+            if (password !== repassword) {
+                alert('Passwords do not match.');
+                return;
+            }
 
-    function togglePasswordVisibility(inputId) {
-      const input = document.getElementById(inputId);
-      const icon = document.getElementById(inputId + '-toggle-icon');
-      
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      } else {
-        input.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      }
-    }
-
-    function getPasswordStrength(password) {
-      if (password.length < 6) {
-        return 'Weak';
-      }
-
-      const hasLowercase = /[a-z]/.test(password);
-      const hasUppercase = /[A-Z]/.test(password);
-      const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
-
-      if (hasLowercase && hasUppercase && hasSpecial) {
-        return 'Strong';
-      } else {
-        return 'Medium';
-      }
-    }
-
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-  </script>
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Registration successful!');
+                // Optionally redirect or clear the form
+                this.reset();
+            })
+            .catch(error => {
+                alert('An error occurred: ' + error.message);
+            });
+        });
+    </script>
 </body>
 </html>
